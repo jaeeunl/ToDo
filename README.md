@@ -1,3 +1,6 @@
-# ToDo
+## Introduction
 
-For now, there is no database. Go into  `client` folder, `npm install` and then `npm start`.
+Simple To Do app built with React.
+
+## Installation
+`client` folder, `npm install` and then `npm start`.
