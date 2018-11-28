@@ -1,0 +1,166 @@
+@import './_variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+// to do board
+.ToDos {
+  width: 90%;
+  max-width: 500px;
+  margin: 5rem auto;
+  padding: 1rem 2rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  font-family: arial;
+  ul {
+    padding-left: 0;
+  }
+}
+
+// board options
+.display-options {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  li {
+    font-size: 0.8rem;
+    margin-right: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// to do items
+.item {
+  position: relative;
+  list-style: none;
+  margin-left: 2rem;
+  padding: 0.4rem;
+  border-bottom: 1px solid $light-gray;
+  cursor: pointer;
+  &.complete {
+    display: none;
+    .show-completed & {
+      display: block;
+    }
+  }
+  &.deleted {
+    display: none; 
+    opacity: 0.5;
+    pointer-events: none;
+    .show-deleted & {
+      display: block;
+    }
+  }
+  input {
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1rem;
+    border: 0;
+    &:focus, &:active {
+      outline: 0;
+    }
+  }
+}
+
+// item icons
+i {
+  &.complete-item, &.add-item {
+    display: inline-block;
+    position: relative;
+    margin-left: -2rem;
+    vertical-align: middle;
+  }
+  &.complete-item {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    .complete & {
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.15rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: black;
+      }
+    }
+    .deleted & {
+      pointer-events: none;
+    }
+  }
+  &.add-item {
+    margin-right: 0.5rem;
+    border: 0;
+    &::before {
+      content: '+';
+      font-size: 24px;
+      line-height: 1rem;
+    }
+  }
+}
+
+// item options
+.item-options {
+  display: none;
+  float: right;
+  font-size: 0.5rem;
+  color: gray;
+  .deleted & {
+    display: none;
+  }
+  .item:hover & {
+    display: block;
+  }
+  span {
+    margin-left: 0.6rem;
+    line-height: 1rem;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// item details modal
+.item-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  .item-details-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    height: 90%;
+    max-width: 24rem;
+    max-height: 30rem;
+    background: white;
+  }
+  textarea {
+    width: 90%;
+    height: 85%;
+  }
+  .close-modal {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    cursor: pointer;
+  }
+}
